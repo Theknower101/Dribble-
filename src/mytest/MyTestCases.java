@@ -26,7 +26,7 @@ public class MyTestCases {
         signup=new SignUpPage(driver);
         login=new LoginPage(driver);
     }
-
+     @Test(priority=1)
     public void checkTheIntroPage() throws InterruptedException {
     	Thread.sleep(1000);
         Assert.assertEquals(
