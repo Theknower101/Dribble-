@@ -2,6 +2,7 @@
 package mytest;
 
 import org.openqa.selenium.WebDriver;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -26,7 +27,6 @@ public class MyTestCases {
         login=new LoginPage(driver);
     }
 
-    @Test(priority=1)
     public void checkTheIntroPage() throws InterruptedException {
     	Thread.sleep(1000);
         Assert.assertEquals(
