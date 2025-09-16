@@ -30,7 +30,7 @@ public class MyTestCases {
     public void checkTheIntroPage() throws InterruptedException {
     	Thread.sleep(1000);
         Assert.assertEquals(
-            intro.checkTheIntroPageIsDisplayed(),true,
+            false,true,
             "❌ Intro page  is not displayed!"
         );
     }
