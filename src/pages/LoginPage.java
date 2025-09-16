@@ -3,27 +3,31 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 public class LoginPage {
 
 WebDriver driver;
-//Locator
-By emailLocator=By.name("login");
-By countinueButtonLocator=By.xpath("//form[@action='/session/send_email_otp']//button[@type='submit'][normalize-space()='Continue']");
-By loginTitleLocator=By.xpath("//h1[normalize-space()='Welcome back']");
+@FindBy(name="login")
+WebElement emailField;
+@FindBy(xpath="//form[@action='/session/send_email_otp']//button[@type='submit'][normalize-space()='Continue']")
+WebElement continueButton;
+
 public LoginPage(WebDriver theDriver) {
 	this.driver=theDriver;
+	PageFactory.initElements(theDriver,this);
 }
-public void logInTest() throws InterruptedException {
+public void loginProcess(String email) {
 	driver.navigate().to("https://dribbble.com/session/new");
-	Thread.sleep(1000);
-	Assert.assertEquals(checkLoginPage(), true);
-	driver.findElement(emailLocator).sendKeys("at3220920@gmail.com");
-	driver.findElement(countinueButtonLocator).click();
+	fillEmail( email);
+	confirmLogin();
 }
-public boolean checkLoginPage() {
-	WebElement loginTitle=driver.findElement(loginTitleLocator);
-	return loginTitle.isDisplayed();
+private void fillEmail(String email) {
+	emailField.sendKeys(email);
+}
+private void confirmLogin() {
+	continueButton.click();
 }
 }

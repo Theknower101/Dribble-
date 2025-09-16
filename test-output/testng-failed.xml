@@ -7,7 +7,9 @@
         <methods>
           <include name="mySetUp"/>
           <include name="closeDriver"/>
+          <include name="checkTheIntroPage"/>
           <include name="logIn"/>
+          <include name="signUp"/>
         </methods>
       </class> <!-- mytest.MyTestCases -->
     </classes>

@@ -3,23 +3,27 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class IntroPage {
     WebDriver driver;
   //Locators
-  	By titleOfPageLocator=By.className("home-hero__heading");
-  	By designTypeFieldLocator=By.xpath("//input[@id='autocomplete-1-input']");
-  	By discoverTabLocator=By.partialLinkText("Discover");
-  	By exploreTabLocator=By.partialLinkText("Explore");
+    @FindBy(className="home-hero__heading")
+    WebElement titleOfPage;
+  	@FindBy(xpath="//input[@id='autocomplete-1-input']")
+  	WebElement designTypeField;
+  	@FindBy(partialLinkText="Discover")
+  	WebElement discoverTab;
+    @FindBy(partialLinkText="Explore")
+    WebElement exploreTab;
+  
 	public IntroPage(WebDriver theDriver) {
 		this.driver=theDriver;
+		PageFactory.initElements(theDriver, this);
 	}
 	
 	public boolean checkTheIntroPageIsDisplayed() {
-		WebElement titleOfPage=driver.findElement(titleOfPageLocator);
-		WebElement designTypeSearchField=driver.findElement(designTypeFieldLocator);
-		WebElement discoverTab=driver.findElement(discoverTabLocator);
-		WebElement exploreTab=driver.findElement(exploreTabLocator);
-		return titleOfPage.isDisplayed()&&designTypeSearchField.isDisplayed()&&discoverTab.isDisplayed()&&exploreTab.isDisplayed();
+		return titleOfPage.isDisplayed()&&designTypeField.isDisplayed()&&discoverTab.isDisplayed()&&exploreTab.isDisplayed();
 	}
 }

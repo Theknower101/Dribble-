@@ -1,4 +1,4 @@
-// ==================== MyTestCases.java ====================
+
 package mytest;
 
 import org.openqa.selenium.WebDriver;
@@ -10,6 +10,7 @@ import pages.IntroPage;
 import pages.LoginPage;
 import pages.SignUpPage;
 import utils.DriverFactory;
+import utils.TesData;
 import utils.TestDataGenerator;
 public class MyTestCases {
     WebDriver driver;
@@ -29,19 +30,19 @@ public class MyTestCases {
     public void checkTheIntroPage() throws InterruptedException {
     	Thread.sleep(1000);
         Assert.assertEquals(
-            intro.checkTheIntroPageIsDisplayed(),true,
+            false,true,
             "❌ Intro page  is not displayed!"
         );
     }
     @Test(priority=2)
     public void signUp() throws InterruptedException {
     	Thread.sleep(1000);
-    	email=TestDataGenerator.getRandomEmail();
+    	email=TestDataGenerator.getRandomEmail(TesData.email);
     	signup.signUpTest(email);
     }
    @Test(priority=3)
    public void logIn () throws InterruptedException {
-	   login.logInTest();
+	   login.loginProcess("at3220920@gmail.com");
    }
     @AfterTest
     public void closeDriver() {
